@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+  <h1 class="mt-5">Todo List</h1>
+  <h2 class="mt-3">
+    <a class="btn btn-primary" href="{% url 'todo_create' %}" role="button"
+      >Add Todo</a
+    >
+  </h2>
+  <ul class="list-group mt-3">
+    {% for todo in todos %}
+    <li class="list-group-item">
+      <div class="row justify-content-start">
+        <div class="col-2 text-truncate">
+          {% if todo.completed %}
+          <s>{{todo.title}}</s>
+          {% else %} {{todo.title}} {% endif %}
+        </div>
+        <div class="col-4">
+          <button
+            class="completed-btn btn btn-success btn-sm ms-3"
+            data-id="{{ todo.id }}"
+          >
+            {% if todo.completed %} Incomplete {% else %} Completed {% endif %}
+          </button>
+
+          <a
+            class="btn btn-secondary btn-sm ms-1"
+            href="{% url 'todo_update' primary_key=todo.id %}"
+            role="button"
+            >Edit</a
+          >
+
+          <a
+            class="btn btn-danger btn-sm ms-1"
+            href="{% url 'todo_delete' primary_key=todo.id %}"
+            role="button"
+            >Delete</a
+          >
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
