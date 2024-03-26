@@ -1,15 +1,27 @@
-{% extends "base.html" %} 
-{% block content %}
-<div class="container">
-{% if user.is_authenticated %}
-Hi {{ user.username }} 
-<form action="{% url 'logout' %}" method="post">
-    {% csrf_token %} 
-    <button type="submit">Log out</button>
-  </form>
-{% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a>
-{% endif %}
-</div> 
+{% extends "base.html" %} {% block content %}
+<div class="container py-4">
+  <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Hello, {{ user.username }}</h1>
+      <p class="col-md-8 fs-4">
+        {% if user.is_authenticated %} Hello {{ user.username }}! {% endif %}
+        Welcome to the Todo app. This app is your ultimate tool for organizing
+        your daily tasks and to-dos efficiently. Just enter a task description
+        and you're all set. With a simple click, you can add tasks to your list
+        and manage them easily. Feel free to create as many tasks as you need to
+        keep your days organized. Ready to get your tasks in order? {% if user.is_authenticated %} 
+        Click the button below and start adding your
+        tasks today! {% endif %} {% if not user.is_authenticated %} Login and
+        start adding your tasks today! {% endif %}
+      </p>
+      {% if user.is_authenticated %}
+        <a class="btn btn-primary btn-lg" type="button" role="button" href="{% url 'todo_create' %}">Create Todo</a>
+        <p class="mt-3">Checkout your todo list here <a href="{% url 'todo_list' %}">List</a>
+      {% else %}
+        <a class="btn btn-primary btn-lg" type="button" role="button" href="{% url 'login' %}">Login</a>
+        <p class="mt-3">Don't have and account <a href="{% url 'signup' %}">Signup</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
 {% endblock %}

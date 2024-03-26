@@ -38,9 +38,7 @@
                 >Home</a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
+            {% if user.is_authenticated %}
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -49,22 +47,20 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown
+                Todo's
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="{% url 'todo_create' %}">Add Todo</a></li>
+                
                 <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="{% url 'todo_list' %}">Todo List</a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
+            {% endif %}
           </ul>
-          {% if user.is_authenticated %} Welcome {{ user.username }}
+          {% if user.is_authenticated %} Welcome {{ user.username }}!
           <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit" class="btn btn-primary ms-2">Log out</button>
