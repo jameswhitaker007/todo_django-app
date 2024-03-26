@@ -9,10 +9,12 @@
         your daily tasks and to-dos efficiently. Just enter a task description
         and you're all set. With a simple click, you can add tasks to your list
         and manage them easily. Feel free to create as many tasks as you need to
-        keep your days organized. Ready to get your tasks in order? {% if user.is_authenticated %} 
-        Click the button below and start adding your
-        tasks today! {% endif %} {% if not user.is_authenticated %} Login and
-        start adding your tasks today! {% endif %}
+        keep your days organized. Ready to get your tasks in order?
+        {% if user.is_authenticated %}
+          Click the button below and start adding your tasks today!
+        {% else %}
+          Login and start adding your tasks today!
+        {% endif %}
       </p>
       {% if user.is_authenticated %}
         <a class="btn btn-primary btn-lg" type="button" role="button" href="{% url 'todo_create' %}">Create Todo</a>
