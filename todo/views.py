@@ -6,13 +6,6 @@ from .forms import TodoForm
 from django.http import JsonResponse
 
 # Create your views here.
-# class TodoList(generics.ListCreateAPIView):
-#     queryset = Todo.objects.all()
-#     serializer_class = TodoSerializer
-
-# class TodoDetail(generics.RetrieveDestroyAPIView):
-#     queryset = Todo.objects.all()
-#     serializer_class = TodoSerializer
 
 def todo_list(request):
     todos = Todo.objects.all()

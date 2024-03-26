@@ -67,6 +67,10 @@
           </form>
           {% else %}
           <a href="{% url 'login' %}">Log in</a>
+          <form action="{% url 'signup' %}" method="post">
+            {% csrf_token %}
+            <a href="{% url 'signup' %}" class="btn btn-primary ms-3" role="button">Signup</a>
+          </form>
           {% endif %}
         </div>
       </div>
