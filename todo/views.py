@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect
-from rest_framework import generics
 from .models import Todo
-from .serializers import TodoSerializer
 from .forms import TodoForm
 from django.http import JsonResponse
 
