@@ -86,7 +86,14 @@ WSGI_APPLICATION = 'tutorial.wsgi.application'
 #     }
 # }
 
-DATABASES = {'default': dj_database_url.config()}
+DATABASES ={
+    'default': {
+        'ENGINE': dj_database_url.config(),
+        'NAME': BASE_DIR / 'db.dj_database_url'
+    }
+}
+
+#DATABASES = {'default': dj_database_url.config()}
 
 
 # Password validation
