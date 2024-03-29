@@ -1,1 +1,1 @@
-web: tutorial.application
+web: application 
