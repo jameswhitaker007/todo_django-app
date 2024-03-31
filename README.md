@@ -1,7 +1,3 @@
-Here's a suggested README for your Django Todo Application. I've included sections that describe the project, how to set it up, and additional details that might be helpful for users and contributors. You might want to customize it further to fit your project's specific needs or to add more details.
-
----
-
 # Django Todo Application
 
 ## Overview
